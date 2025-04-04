@@ -1,50 +1,31 @@
 # HealthConnectIntegration
 
- Health Connect Integration
-🛠️ Steps Taken for Integration:
-Enabled Gradle export and modified the unityLibrary/build.gradle to:
+Simulated Health Connect Data - Unity Project
 
-Add the Health Connect Maven repository:
+Approach: Simulated Data
 
-gradle
-Copy
-Edit
-maven { url 'https://androidx.dev/storage/health-connect/client/maven' }
-Add the dependency:
+Reasons for Simulation:
+- This implementation uses simulated data to avoid integrating Health Connect APIs, ensuring compatibility with Unity 2022.3.60f1 LTS and simplifying Android builds without dependency issues.
 
-gradle
-Copy
-Edit
-implementation 'androidx.health.connect.client:health-connect-client:1.0.0-alpha01'
-Updated AndroidManifest in the launcher module to request necessary Health Connect permissions.
+Simulation:
+- Simulated steps, heart rate, and sleep data are randomly generated on app launch.
 
-Built custom Android Java plugin to interact with Health Connect (using AndroidJavaObject inside Unity to call native code).
+UI Design:
+- Clean text-based display for the simulated values.
+- Unity Canvas system used for displaying values.
 
-🔐 Permissions Handling:
-At runtime, permission checks are done using Unity’s AndroidJavaObject bridge.
+Build Instructions:
+- Unity Version: 2022.3.60f1 LTS
+- Build Platform: Android
+- No custom Gradle or external SDKs required.
+- Uses Unity's built-in Gradle and OpenJDK tools.
 
-If permission is not granted, we launch an intent to open Health Connect’s permission settings screen.
+To Run:
+1. Open the project in Unity.
+2. Build for Android using File → Build Settings.
+3. Install the APK on any Android device.
 
-📊 Fetching & Processing Data:
-Queried steps and distance via the Health Connect SDK.
-
-Data is passed from the Android plugin back to Unity using UnityPlayer API callbacks.
-
-Displayed inside a Unity canvas UI in a clean and user-friendly format.
-
-🧱 Challenges & Solutions:
-Missing dependency resolution: Initially, the health-connect-client:1.0.0-alpha01 dependency failed. Solved by manually adding the missing Maven repo in unityLibrary/build.gradle.
-
-StackOverflowError during Gradle build: Related to cyclical plugin dependencies. Resolved by cleaning Gradle cache and manually reviewing settings.gradle to remove extra includes.
-
-Unity-Android bridge: Unity does not support Health Connect natively, so we built a Java-side wrapper to interface with the Unity layer.
-
-▶️ Running the APK:
-Install the APK on an Android device (Android 10+ required).
-
-Make sure the Health Connect app is installed and set up.
-
-Open the app and tap “Grant Permission” to allow data access.
-
-View steps and distance data in the Unity UI.
+Assumptions:
+- User is not required to grant health-related permissions as no real data is fetched.
+- All values are for demo purposes only.
 

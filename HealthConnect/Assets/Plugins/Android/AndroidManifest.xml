@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.my.healthconnect">
+
+  <!-- Required Health Connect permission -->
+  <uses-permission android:name="android.permission.ACCESS_HEALTH_CONNECT" />
+
+  <application>
+    <!-- Optional: Health Connect metadata for Play Store detection (can be omitted) -->
+    <meta-data
+        android:name="com.google.android.gms.healthconnect"
+        android:value="true" />
+  </application>
+
+</manifest>
